@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TreeTransport - Lista dos Horarios dos Autocarros </title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body id="bodyClass">
+    <div class="mynavbar navbar navbar-dark fixed-top lightgray">
+        <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <strong class="text-dark">
+                    <img src="/img/icon.png" width="16px">
+                    TreeTransport
+                </strong>
+            </a>
+
+            <ul class="nav nav-pills">
+                <!-- <li class="nav-item">
+                    <a class="nav-link text-dark" href="/maps">Mapa</a>
+                </li> -->
+                <!-- <li class="nav-item">
+                    <a class="nav-link text-dark" href="/list-stations-bus">Autocarro</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/list-stations-train">Comboios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/list-stations-submay">Metro</a>
+                </li>
+            </ul>
+        </div>
+    </div><br><br><br>
+
+    <div class="container mt-3">
+        <% if (submay != '') { %>
+            <div class="row">
+                <% for (var i=0; i<submay.resposta.length; i++) { %>
+                <div class="col-md-6 mb-2">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-md-6 text-center">
+                                    <i class="fa fa-subway text-primary fa-3x"></i>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>
+                                        <%= submay.resposta[i].stop_id %>
+                                        <small class="text-capitalize">(<%= submay.resposta[i].comboio %>)</small>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="row mt-3 justify-content-between align-items-center">
+                                <div class="col-md-6">
+                                    <!-- <div class="font-weight-bold text-secondary text-uppercase">de:</div>
+                                        <span class="text-capitalize"></span> -->
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="font-weight-bold text-secondary text-uppercase">para:</div>
+                                        <% if(submay.resposta[i].destino == '33') { %>
+                                            <span class="text-capitalize">Reboleira</span>
+                                        <% } else if(submay.resposta[i].destino == '34') { %>
+                                            <span class="text-capitalize">Amadora Este</span>
+                                        <% } else if(submay.resposta[i].destino == '35') { %>
+                                            <span class="text-capitalize">Pontinha</span>
+                                        <% } else if(submay.resposta[i].destino == '36') { %>
+                                            <span class="text-capitalize">Colégio Militar</span>
+                                        <% } else if(submay.resposta[i].destino == '37') { %>
+                                            <span class="text-capitalize">Laranjeiras</span>
+                                        <% } else if(submay.resposta[i].destino == '38') { %>
+                                            <span class="text-capitalize">São Sebastião</span>
+                                        <% } else if(submay.resposta[i].destino == '39') { %>
+                                            <span class="text-capitalize">Avenida</span>
+                                        <% } else if(submay.resposta[i].destino == '40') { %>
+                                            <span class="text-capitalize">Baixa-Chiado</span>
+                                        <% } else if(submay.resposta[i].destino == '41') { %>
+                                            <span class="text-capitalize">Terreiro do Paço</span>
+                                        <% } else if(submay.resposta[i].destino == '42') { %>
+                                            <span class="text-capitalize">Santa Apolónia</span>
+                                        <% } else if(submay.resposta[i].destino == '43') { %>
+                                            <span class="text-capitalize">Odivelas</span>
+                                        <% } else if(submay.resposta[i].destino == '44') { %>
+                                            <span class="text-capitalize">Lumiar</span>
+                                        <% } else if(submay.resposta[i].destino == '45') { %>
+                                            <span class="text-capitalize">Campo Grande</span>
+                                        <% } else if(submay.resposta[i].destino == '46') { %>
+                                            <span class="text-capitalize">Campo Pequeno</span>
+                                        <% } else if(submay.resposta[i].destino == '48') { %>
+                                            <span class="text-capitalize">Rato</span>
+                                        <% } else if(submay.resposta[i].destino == '50') { %>
+                                            <span class="text-capitalize">Telheiras</span>
+                                        <% } else if(submay.resposta[i].destino == '51') { %>
+                                            <span class="text-capitalize">Alvalade</span>
+                                        <% } else if(submay.resposta[i].destino == '52') { %>
+                                            <span class="text-capitalize">Alameda</span>
+                                        <% } else if(submay.resposta[i].destino == '53') { %>
+                                            <span class="text-capitalize">Martim Moniz</span>
+                                        <% } else if(submay.resposta[i].destino == '54') { %>
+                                            <span class="text-capitalize">Cais do Sodré</span>
+                                        <% } else if(submay.resposta[i].destino == '56') { %>
+                                            <span class="text-capitalize">Bela Vista</span>
+                                        <% } else if(submay.resposta[i].destino == '57') { %>
+                                            <span class="text-capitalize">Chelas</span>
+                                        <% } else if(submay.resposta[i].destino == '59') { %>
+                                            <span class="text-capitalize">Moscavide</span>
+                                        <% } else { %>
+                                            <span class="text-capitalize">Aeroporto</span>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-dark text-white text-center">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span class="font-weight-bold" id="time_<%= submay.resposta[i].tempoChegada1 %>"></span>
+                                    <script>
+                                        function startTimer(duration, display) {
+                                            var timer = duration, minutes, seconds;
+                                            setInterval(function () {
+                                                minutes = parseInt(timer / 60, 10);
+                                                seconds = parseInt(timer % 60, 10);
+
+                                                minutes = minutes < 10 ? "0" + minutes : minutes;
+                                                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                                                display.textContent = "Faltam: " + minutes + "m" + ":" + seconds + "s";
+
+                                                if (--timer < 0) {
+                                                    timer = duration;
+                                                }
+                                            }, 1000);
+                                        }
+
+                                        var finalTime = '<%= submay.resposta[i].tempoChegada1 %>',
+                                            display = document.querySelector('#time_<%- submay.resposta[i].tempoChegada1 %>');
+                                        startTimer(finalTime, display);
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-2">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-md-6 text-center">
+                                    <i class="fa fa-subway text-primary fa-3x"></i>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>
+                                        <%= submay.resposta[i].stop_id %>
+                                        <small class="text-capitalize">(<%= submay.resposta[i].comboio2 %>)</small>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="row mt-3 justify-content-between align-items-center">
+                                <div class="col-md-6">
+                                    <!-- <div class="font-weight-bold text-secondary text-uppercase">de:</div>
+                                        <span class="text-capitalize"></span> -->
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="font-weight-bold text-secondary text-uppercase">para:</div>
+                                        <% if(submay.resposta[i].destino == '33') { %>
+                                            <span class="text-capitalize">Reboleira</span>
+                                        <% } else if(submay.resposta[i].destino == '34') { %>
+                                            <span class="text-capitalize">Amadora Este</span>
+                                        <% } else if(submay.resposta[i].destino == '35') { %>
+                                            <span class="text-capitalize">Pontinha</span>
+                                        <% } else if(submay.resposta[i].destino == '36') { %>
+                                            <span class="text-capitalize">Colégio Militar</span>
+                                        <% } else if(submay.resposta[i].destino == '37') { %>
+                                            <span class="text-capitalize">Laranjeiras</span>
+                                        <% } else if(submay.resposta[i].destino == '38') { %>
+                                            <span class="text-capitalize">São Sebastião</span>
+                                        <% } else if(submay.resposta[i].destino == '39') { %>
+                                            <span class="text-capitalize">Avenida</span>
+                                        <% } else if(submay.resposta[i].destino == '40') { %>
+                                            <span class="text-capitalize">Baixa-Chiado</span>
+                                        <% } else if(submay.resposta[i].destino == '41') { %>
+                                            <span class="text-capitalize">Terreiro do Paço</span>
+                                        <% } else if(submay.resposta[i].destino == '42') { %>
+                                            <span class="text-capitalize">Santa Apolónia</span>
+                                        <% } else if(submay.resposta[i].destino == '43') { %>
+                                            <span class="text-capitalize">Odivelas</span>
+                                        <% } else if(submay.resposta[i].destino == '44') { %>
+                                            <span class="text-capitalize">Lumiar</span>
+                                        <% } else if(submay.resposta[i].destino == '45') { %>
+                                            <span class="text-capitalize">Campo Grande</span>
+                                        <% } else if(submay.resposta[i].destino == '46') { %>
+                                            <span class="text-capitalize">Campo Pequeno</span>
+                                        <% } else if(submay.resposta[i].destino == '48') { %>
+                                            <span class="text-capitalize">Rato</span>
+                                        <% } else if(submay.resposta[i].destino == '50') { %>
+                                            <span class="text-capitalize">Telheiras</span>
+                                        <% } else if(submay.resposta[i].destino == '51') { %>
+                                            <span class="text-capitalize">Alvalade</span>
+                                        <% } else if(submay.resposta[i].destino == '52') { %>
+                                            <span class="text-capitalize">Alameda</span>
+                                        <% } else if(submay.resposta[i].destino == '53') { %>
+                                            <span class="text-capitalize">Martim Moniz</span>
+                                        <% } else if(submay.resposta[i].destino == '54') { %>
+                                            <span class="text-capitalize">Cais do Sodré</span>
+                                        <% } else if(submay.resposta[i].destino == '56') { %>
+                                            <span class="text-capitalize">Bela Vista</span>
+                                        <% } else if(submay.resposta[i].destino == '57') { %>
+                                            <span class="text-capitalize">Chelas</span>
+                                        <% } else if(submay.resposta[i].destino == '59') { %>
+                                            <span class="text-capitalize">Moscavide</span>
+                                        <% } else { %>
+                                            <span class="text-capitalize">Aeroporto</span>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-dark text-white text-center">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span class="font-weight-bold" id="time_<%= submay.resposta[i].tempoChegada2 %>"></span>
+                                    <script>
+                                        function startTimer(duration, display) {
+                                            var timer = duration, minutes, seconds;
+                                            setInterval(function () {
+                                                minutes = parseInt(timer / 60, 10);
+                                                seconds = parseInt(timer % 60, 10);
+
+                                                minutes = minutes < 10 ? "0" + minutes : minutes;
+                                                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                                                display.textContent = "Faltam: " + minutes + "m" + ":" + seconds + "s";
+
+                                                if (--timer < 0) {
+                                                    timer = duration;
+                                                }
+                                            }, 1000);
+                                        }
+
+                                        var finalTime = '<%= submay.resposta[i].tempoChegada2 %>',
+                                            display = document.querySelector('#time_<%- submay.resposta[i].tempoChegada2 %>');
+                                        startTimer(finalTime, display);
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-2">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-md-6 text-center">
+                                    <i class="fa fa-subway text-primary fa-3x"></i>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>
+                                        <%= submay.resposta[i].stop_id %>
+                                        <small class="text-capitalize">(<%= submay.resposta[i].comboio3 %>)</small>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="row mt-3 justify-content-between align-items-center">
+                                <div class="col-md-6">
+                                    <!-- <div class="font-weight-bold text-secondary text-uppercase">de:</div>
+                                        <span class="text-capitalize"></span> -->
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="font-weight-bold text-secondary text-uppercase">para:</div>
+                                        <% if(submay.resposta[i].destino == '33') { %>
+                                            <span class="text-capitalize">Reboleira</span>
+                                        <% } else if(submay.resposta[i].destino == '34') { %>
+                                            <span class="text-capitalize">Amadora Este</span>
+                                        <% } else if(submay.resposta[i].destino == '35') { %>
+                                            <span class="text-capitalize">Pontinha</span>
+                                        <% } else if(submay.resposta[i].destino == '36') { %>
+                                            <span class="text-capitalize">Colégio Militar</span>
+                                        <% } else if(submay.resposta[i].destino == '37') { %>
+                                            <span class="text-capitalize">Laranjeiras</span>
+                                        <% } else if(submay.resposta[i].destino == '38') { %>
+                                            <span class="text-capitalize">São Sebastião</span>
+                                        <% } else if(submay.resposta[i].destino == '39') { %>
+                                            <span class="text-capitalize">Avenida</span>
+                                        <% } else if(submay.resposta[i].destino == '40') { %>
+                                            <span class="text-capitalize">Baixa-Chiado</span>
+                                        <% } else if(submay.resposta[i].destino == '41') { %>
+                                            <span class="text-capitalize">Terreiro do Paço</span>
+                                        <% } else if(submay.resposta[i].destino == '42') { %>
+                                            <span class="text-capitalize">Santa Apolónia</span>
+                                        <% } else if(submay.resposta[i].destino == '43') { %>
+                                            <span class="text-capitalize">Odivelas</span>
+                                        <% } else if(submay.resposta[i].destino == '44') { %>
+                                            <span class="text-capitalize">Lumiar</span>
+                                        <% } else if(submay.resposta[i].destino == '45') { %>
+                                            <span class="text-capitalize">Campo Grande</span>
+                                        <% } else if(submay.resposta[i].destino == '46') { %>
+                                            <span class="text-capitalize">Campo Pequeno</span>
+                                        <% } else if(submay.resposta[i].destino == '48') { %>
+                                            <span class="text-capitalize">Rato</span>
+                                        <% } else if(submay.resposta[i].destino == '50') { %>
+                                            <span class="text-capitalize">Telheiras</span>
+                                        <% } else if(submay.resposta[i].destino == '51') { %>
+                                            <span class="text-capitalize">Alvalade</span>
+                                        <% } else if(submay.resposta[i].destino == '52') { %>
+                                            <span class="text-capitalize">Alameda</span>
+                                        <% } else if(submay.resposta[i].destino == '53') { %>
+                                            <span class="text-capitalize">Martim Moniz</span>
+                                        <% } else if(submay.resposta[i].destino == '54') { %>
+                                            <span class="text-capitalize">Cais do Sodré</span>
+                                        <% } else if(submay.resposta[i].destino == '56') { %>
+                                            <span class="text-capitalize">Bela Vista</span>
+                                        <% } else if(submay.resposta[i].destino == '57') { %>
+                                            <span class="text-capitalize">Chelas</span>
+                                        <% } else if(submay.resposta[i].destino == '59') { %>
+                                            <span class="text-capitalize">Moscavide</span>
+                                        <% } else { %>
+                                            <span class="text-capitalize">Aeroporto</span>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-dark text-white text-center">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span class="font-weight-bold" id="time_<%= submay.resposta[i].tempoChegada3 %>"></span>
+                                    <script>
+                                        function startTimer(duration, display) {
+                                            var timer = duration, minutes, seconds;
+                                            setInterval(function () {
+                                                minutes = parseInt(timer / 60, 10);
+                                                seconds = parseInt(timer % 60, 10);
+
+                                                minutes = minutes < 10 ? "0" + minutes : minutes;
+                                                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                                                display.textContent = "Faltam: " + minutes + "m" + ":" + seconds + "s";
+
+                                                if (--timer < 0) {
+                                                    timer = duration;
+                                                }
+                                            }, 1000);
+                                        }
+                                        
+                                        var finalTime = '<%= submay.resposta[i].tempoChegada3 %>',
+                                            display = document.querySelector('#time_<%- submay.resposta[i].tempoChegada3 %>');
+                                        startTimer(finalTime, display);
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            <% } else { %>
+                <div class="alert alert-danger" role="alert">
+                    Estação Inactiva ou sem dados dos horarios!
+                </div>
+            <% } %>
+        </div>
+
+        <footer class="page-footer font-small lightgray">
+            <div class="footer-copyright text-center py-3">
+                © 2020 Copyright:
+                <a href="telmovalves.pt" class="text-dark text-decoration-none">Telmo Alves ❤️</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

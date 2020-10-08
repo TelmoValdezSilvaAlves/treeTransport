@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>TreeTransport - Lista dos Horarios dos Autocarros </title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body id="bodyClass">
+    <div class="mynavbar navbar navbar-dark fixed-top lightgray">
+        <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <strong class="text-dark">
+                    <img src="/img/icon.png" width="16px">
+                    TreeTransport
+                </strong>
+            </a>
+
+            <ul class="nav nav-pills">
+                <!-- <li class="nav-item">
+                    <a class="nav-link text-dark" href="/maps">Mapa</a>
+                </li> -->
+                <!-- <li class="nav-item">
+                    <a class="nav-link text-dark" href="/list-stations-bus">Autocarro</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/list-stations-train">Comboios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/list-stations-submay">Metro</a>
+                </li>
+            </ul>
+        </div>
+    </div><br><br><br>
+
+    <div class="container mt-3">
+        <form action="/search-bus" method="get">
+            <div class="input-group">
+                <input class="form-control" type="search" name="search">
+                <span class="form-group-prepend">
+                    <button type="submit" class="btn btn-primary">Procurar</button>
+                </span>
+            </div>
+        </form><br>
+
+        <div class="row">
+            <% for (var i=0; i<bus.length; i++) { %>
+                <div class="col-md-6 mb-2">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <%= bus[i].routeNumber %>
+                            <h7>(<%= bus[i].name %>)</h7>
+                        </div>
+                        <div class="card-footer bg-dark text-right">
+                            <a class="text-green small" href="/list-stops-bus/<%= bus[i].routeNumber %>">Ver as paragens
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        
+        <footer class="page-footer font-small lightgray">
+            <div class="footer-copyright text-center py-3">
+                © 2020 Copyright:
+                <a href="telmovalves.pt" class="text-dark text-decoration-none">Telmo Alves ❤️</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

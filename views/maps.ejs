@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TreeTransport - Mapa </title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="mynavbar navbar navbar-dark lightgray">
+        <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <strong class="text-dark">
+                    <img src="/img/icon.png" width="16px">
+                    TreeTransport
+                </strong>
+            </a>
+
+            <ul class="nav nav-pills">
+                <!-- <li class="nav-item">
+                    <a class="nav-link text-dark" href="/maps">Mapa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/list-stations-bus">Autocarro</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/list-stations-train">Comboios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/list-stations-submay">Metro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div id="map"></div>
+    </div>
+
+    <footer class="page-footer font-small lightgray">
+        <div class="footer-copyright text-center py-3">
+            © 2020 Copyright:
+            <a href="telmovalves.pt" class="text-dark text-decoration-none">Telmo Alves ❤️</a>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        var map;
+
+        function initialize() {
+            var bounds = new google.maps.LatLngBounds();
+            var mapOptions = {
+                mapTypeId: "roadmap",
+            };
+
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            var busMaps = <%- JSON.parse(markersBus) %>;
+
+            var infoWindow = new google.maps.InfoWindow(),
+            marker, i;
+
+            for (var i = 0; i < busMaps.length; i++) {
+                var lat = busMaps[i].lat;
+                var lng = busMaps[i].lng;
+                var position = new google.maps.LatLng(lat, lng);
+                bounds.extend(position);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    icon: './img/bus.png'
+                });
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infoWindow.setContent(busMaps[i].routeNumber);
+                        infoWindow.open(map, marker);
+                    }
+                })(marker, i));
+
+                map.fitBounds(bounds);
+
+                zoomChangeBoundsListener = google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
+                    if ( this.getZoom() ){
+                        this.setZoom(14);
+                    }
+                });
+
+                // setTimeout(function(){google.maps.event.removeListener(zoomChangeBoundsListener)}, 2000);
+            }
+        }
+
+        const maps = setInterval(initialize, 20000);
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGe_HrI3QO65vReVdhlKgSeN3JDI5j0g8&callback=initialize" async defer></script>
+</body>
+</html>
