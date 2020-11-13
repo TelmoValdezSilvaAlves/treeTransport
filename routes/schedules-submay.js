@@ -13,7 +13,7 @@ router.get('/list-schedules-submay/:slug', function (req, res, slug) {
 	var request = require('request');
 	request({url,
 			headers: {
-				Authorization: 'Bearer 6be8783e-63d1-3b75-9e45-887cb6ed970d',
+				Authorization: 'Bearer 7272c157-6916-3d47-a0a8-1418a68ad83e',
 			},
 			rejectUnauthorized: true,
 		},
