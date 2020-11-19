@@ -91,13 +91,12 @@
                                     <div class="card-footer bg-dark text-white text-center">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <span id="hora_<%= train.HorarioDetalhe[i].HoraPartida %>" class="font-weight-bold"></span>
+                                                <span id="hora_<%=i%>_<%= train.HorarioDetalhe[i].HoraChegada %>" class="font-weight-bold"></span>
                                                 <script>
-                                                    var datetime = new Date('<%= train.HorarioDetalhe[i].HoraPartida %>')
+                                                    var datetime = new Date('<%= train.HorarioDetalhe[i].HoraChegada %>')
                                                     var hours = datetime.getHours();
                                                     var minutes = (datetime.getMinutes() < 10? '0' : '') + datetime.getMinutes();
-                                                    console.log('Hora: '+hours +':' +minutes);
-                                                    document.getElementById('hora_<%= train.HorarioDetalhe[i].HoraPartida %>').innerHTML = 'Hora: '+hours +':' +minutes;
+                                                    document.getElementById('hora_<%=i%>_<%= train.HorarioDetalhe[i].HoraChegada %>').innerHTML = 'Hora: '+hours +':' +minutes;
                                                 </script>
                                             </div>
                                             <div class="col-md-6">
@@ -150,13 +149,12 @@
                                     <div class="card-footer bg-dark text-white text-center">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <span id='hora_<%= train.HorarioDetalhe[i].HoraPartida %>' class="font-weight-bold"></span>
+                                                <span id='hora_<%=i%>_<%= train.HorarioDetalhe[i].HoraChegada %>' class="font-weight-bold"></span>
                                                 <script>
-                                                    var datetime = new Date('<%= train.HorarioDetalhe[i].HoraPartida %>')
+                                                    var datetime = new Date('<%= train.HorarioDetalhe[i].HoraChegada %>')
                                                     var hours = datetime.getHours();
                                                     var minutes = (datetime.getMinutes() < 10? '0' : '') + datetime.getMinutes();
-                                                    console.log('Hora: '+hours +':' +minutes);
-                                                    document.getElementById('hora_<%= train.HorarioDetalhe[i].HoraPartida %>').innerHTML = 'Hora: '+hours +':' +minutes;
+                                                    document.getElementById('hora_<%=i%>_<%= train.HorarioDetalhe[i].HoraChegada %>').innerHTML = 'Hora: '+hours +':' +minutes;
                                                 </script>
                                             </div>
                                             <div class="col-md-6">
@@ -209,13 +207,12 @@
                                     <div class="card-footer bg-dark text-white text-center">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <span id='hora_<%= train.HorarioDetalhe[i].HoraPartida %>' class="font-weight-bold"></span>
+                                                <span id='hora_<%=i%>_<%= train.HorarioDetalhe[i].HoraChegada %>' class="font-weight-bold"></span>
                                                 <script>
-                                                    var datetime = new Date('<%= train.HorarioDetalhe[i].HoraPartida %>')
+                                                    var datetime = new Date('<%= train.HorarioDetalhe[i].HoraChegada %>')
                                                     var hours = datetime.getHours();
                                                     var minutes = (datetime.getMinutes() < 10? '0' : '') + datetime.getMinutes();
-                                                    console.log('Hora: '+hours +':' +minutes);
-                                                    document.getElementById('hora_<%= train.HorarioDetalhe[i].HoraPartida %>').innerHTML = 'Hora: '+hours +':' +minutes;
+                                                    document.getElementById('hora_<%=i%>_<%= train.HorarioDetalhe[i].HoraChegada %>').innerHTML = 'Hora: '+hours +':' +minutes;
                                                 </script>
                                             </div>
                                             <div class="col-md-6">
@@ -232,8 +229,6 @@
                 </div>
             </div>
         </div>
-
-        
 
         <footer class="page-footer font-small lightgray">
             <div class="footer-copyright text-center py-3">
